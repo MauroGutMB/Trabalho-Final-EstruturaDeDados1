@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
+ * Estrutura do Vetor:
+ * \int *elementos
+ * \int tamanho
+ * \int index_atual*/
 typedef struct Vetor {
   int *elementos;
   int tamanho;
@@ -81,4 +86,35 @@ void preencherVetorAleatorio(Vetor *v, int n, int cap) {
 void liberarVetor(Vetor *v) {
   free(v->elementos);
   free(v);
+}
+
+/*
+ * Função pra obter o tamanho atual do vetor
+ * */
+int obterTamanhoVetor(Vetor *v) {
+  return v->index_atual;
+}
+
+/*
+ * Função pra obter o elemento em um índice específico
+ * */
+int obterElemento(Vetor *v, int indice) {
+  if (indice < 0 || indice >= v->index_atual) {
+    printf("Erro: Índice fora dos limites do vetor.\n");
+    return -1; // Retorna -1 em caso de erro
+  }
+  return v->elementos[indice];
+}
+
+/*
+ * Função pra trocar dois elementos no vetor
+ * */
+void swapElementos(Vetor *v, int indice1, int indice2) {
+  if (indice1 < 0 || indice1 >= v->index_atual || indice2 < 0 || indice2 >= v->index_atual) {
+    printf("Erro: Índices fora dos limites do vetor.\n");
+    return;
+  }
+  int temp = v->elementos[indice1];
+  v->elementos[indice1] = v->elementos[indice2];
+  v->elementos[indice2] = temp;
 }
