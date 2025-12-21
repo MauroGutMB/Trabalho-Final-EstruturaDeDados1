@@ -70,11 +70,14 @@ void preencherVetorAleatorio(Vetor *v, int n, int cap) {
     return;
   }
   for (int i = 0; i < n; i++) {
-    int valor_aleatorio = (rand() % cap) + 1; // Gera um número aleatório entre 1 e 100000
+    int valor_aleatorio = (rand() % cap) + 1; // Gera um número aleatório entre 1 e cap
     definirElemento(v, -1, valor_aleatorio);
   }
 }
 
+/*
+ * Função pra liberar vetor e seus elementos
+ * */
 void liberarVetor(Vetor *v) {
   free(v->elementos);
   free(v);

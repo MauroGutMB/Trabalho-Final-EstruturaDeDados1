@@ -1,0 +1,6 @@
+# ignorar arquivos sem extensão gerados da compilação C
+*
+!*/
+!*.*
+*.o
+# .gitignore
