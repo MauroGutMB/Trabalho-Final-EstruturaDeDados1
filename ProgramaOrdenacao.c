@@ -9,17 +9,21 @@
 #include <stdio.h>
 #include <time.h>
 
+void MenuProgramaOrdenacao();
+
 int n = 20000; // numero de elementos
 
 int main(){
   Vetor* vetor = criarVetor(n);
   preencherVetorAleatorio(vetor, n, 100);
 
-  clock_t t_bubbleSort = BubbleSort(vetor); // tempo do bubble sort
+  imprimirVetor(vetor);
+  // clock_t t_bubbleSort = BubbleSort(vetor); // tempo do bubble sort
+  clock_t t_selectionSort = SelectionSort(vetor); // tempo do bubble sort
 
   imprimirVetor(vetor);
 
-  printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)t_bubbleSort) / CLOCKS_PER_SEC);
+  printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)t_selectionSort) / CLOCKS_PER_SEC);
 
 
   liberarVetor(vetor);
