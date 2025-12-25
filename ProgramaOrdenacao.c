@@ -97,7 +97,7 @@ int MenuSelecaoOrdenacao(){
   printf("+----------------------------------+\n");
   printf("| 1. Bubble Sort    (Implementado) |\n");
   printf("| 2. Selection Sort (Implementado) |\n");
-  printf("| 3. Insertion Sort (...)          |\n");
+  printf("| 3. Insertion Sort (Implementado) |\n");
   printf("| 4. Merge Sort     (...)          |\n");
   printf("| 5. Quick Sort     (...)          |\n");
   printf("| 6. Heap Sort      (...)          |\n");
@@ -107,14 +107,14 @@ int MenuSelecaoOrdenacao(){
   printf("\n\n\n");
 
   printf("- Escolha um dos algoritmos de ordenação acima -\n");
-  printf("- algoritmos funcionando: 1, 2, ... -\n");
+  printf("- algoritmos funcionando: 1, 2, 3, ... -\n");
   printf("-> ");
 
   scanf("%c", &x);
 
   y = x - '0';
 
-  if(x != '1' && x != '2'){
+  if(x != '1' && x != '2' && x != '3'){
     FuncaoErro();
     return -1;
   }
@@ -257,6 +257,11 @@ void fazerOrdenacao(int algoritmo){
   if(algoritmo == SELECTIONSORT){
     printf("Iniciando a ordenação com o algorítmo SELECTIONSORT\n");
     clock_t tempo = SelectionSort(vetor);
+    printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)tempo) / CLOCKS_PER_SEC);
+  }
+  if(algoritmo == INSERTIONSORT){
+    printf("Iniciando a ordenação com o algorítmo INSERTIONSORT\n");
+    clock_t tempo = InsertionSort(vetor);
     printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)tempo) / CLOCKS_PER_SEC);
   }
 }
