@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 #define lim 100 // geração de números aleatórios de 1 à lim
 
@@ -24,40 +25,65 @@ void FuncaoErro(); // função caso alguma opção inválida seja selecionada
 void preenchimentoManual(); // função de preechimento manual do vetor
 void preenchimentoAutomatico(); // função de preenchimento automatico do vetor
 void limparVetor(); // função pra limpar o vetor
-void fazerOrdenacao(int algoritmo);
-void limparBuffer();
+void fazerOrdenacao(int algoritmo); // faz a ordenação 
+void limparBuffer(); // limpa o buffer / também utilizo como confirmação pra prosseguir
 
 Vetor* vetor; // vetor utilizado
+bool programa = true; // programa rodando
+
+// ---------------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------------------------------------------------------------------------- //
 
 /*
  * Função principal que inicializa o programa de ordenação
  * */
 int main(){
-  /*
-  Vetor* vetor = criarVetor(n);
-  preencherVetorAleatorio(vetor, n, 100);
 
-  imprimirVetor(vetor);
-  // clock_t t_bubbleSort = BubbleSort(vetor); // tempo do bubble sort
-  clock_t t_selectionSort = SelectionSort(vetor); // tempo do bubble sort
+  while(programa){
 
-  imprimirVetor(vetor);
+    int opt = 0;
+    char c;
+    
+    printf("+---------------------------------------+\n");
+    printf("|         Programa de Ordenação         |\n");
+    printf("+---------------------------------------+\n");
+    printf("| 1. Gerenciar o Vetor utilizado        |\n");
+    printf("| 2. Utilizar um algoritmo de ordenação |\n");
+    printf("| 3. Mostrar o vetor                    |\n");
+    printf("| 4. Sair do programa                   |\n");
+    printf("+---------------------------------------+\n");
 
-  printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)t_selectionSort) / CLOCKS_PER_SEC);
+    printf("\n\n\n");
+    printf("- Selecione uma opção -\n");
+    printf("-> ");
 
+    scanf("%c", &c);
+    limparBuffer();
 
-  liberarVetor(vetor);
-  return 0;
-  */
+    opt = c - '0';
 
-  GerenciarVetor();
+    switch (opt) {
+      case 1: limparTela(); GerenciarVetor(); limparTela(); continue;
+      case 2: limparTela(); if(vetor == NULL){printf("Vetor vazio.\n"); continue;} fazerOrdenacao(MenuSelecaoOrdenacao()); limparBuffer(); limparTela();  continue;
+      case 3: limparTela(); if(vetor == NULL){printf("Vetor vazio.\n"); continue;} imprimirVetor(vetor); limparBuffer(); limparTela();  continue;
+      case 4: limparTela(); if(vetor != NULL){printf("Por favor, libere o vetor\n"); continue;} programa = 0; limparTela(); break;
+      default: limparTela(); printf("Por favor, selecione uma opção válida!\n");
+    }
 
-  fazerOrdenacao(MenuSelecaoOrdenacao());
+  }
 
-  limparVetor();
+  limparTela();
+  printf("+-------------------------------+\n");
+  printf("| Obrigado por usar o programa! |\n");
+  printf("+-------------------------------+\n");
 
   return 0;
 }
+
+// ---------------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------------------------------------------------------------------------- //
 
 /*
  * */
@@ -90,7 +116,7 @@ int MenuSelecaoOrdenacao(){
 
   if(x != '1' && x != '2'){
     FuncaoErro();
-    return 0;
+    return -1;
   }
 
   limparTela();
@@ -115,6 +141,7 @@ void GerenciarVetor(){
   printf("+--------------------------------------+\n");
 
   printf("\n\n\n");
+  printf("-> ");
 
   scanf("%c", &x);
   limparBuffer();
@@ -147,6 +174,7 @@ void preenchimentoManual(){
 
   if(vetor != NULL){
     printf("O vetor não está vazio. Por favor, libere-o e tente de novo.\n");
+    limparBuffer();
     return;
   }
 
@@ -182,6 +210,7 @@ void preenchimentoAutomatico(){
 
   if(vetor != NULL){
     printf("O vetor não está vazio. Por favor, libere-o e tente de novo.\n");
+    limparBuffer();
     return;
   }
 
@@ -199,6 +228,7 @@ void preenchimentoAutomatico(){
   printf("Elementos do vetor: ");
   imprimirVetor(vetor);
 
+  limparBuffer();
   limparTela();
 
 }
@@ -207,6 +237,7 @@ void preenchimentoAutomatico(){
  * */
 void limparVetor(){
   liberarVetor(vetor);
+  vetor = NULL;
 
   printf("Vetor liberado com sucesso!\n");
 
@@ -215,6 +246,8 @@ void limparVetor(){
 
 }
 
+/*
+ * */
 void fazerOrdenacao(int algoritmo){
   if(algoritmo == BUBBLESORT){
     printf("Iniciando a ordenação com o algorítmo BUBBLESORT\n");
@@ -228,6 +261,8 @@ void fazerOrdenacao(int algoritmo){
   }
 }
 
+/*
+ * */
 void limparBuffer(){
 	int c;
 	while ((c = getchar()) != '\n' && c != EOF);
