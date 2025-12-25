@@ -98,7 +98,7 @@ int MenuSelecaoOrdenacao(){
   printf("| 1. Bubble Sort    (Implementado) |\n");
   printf("| 2. Selection Sort (Implementado) |\n");
   printf("| 3. Insertion Sort (Implementado) |\n");
-  printf("| 4. Merge Sort     (...)          |\n");
+  printf("| 4. Merge Sort     (Implementado) |\n");
   printf("| 5. Quick Sort     (...)          |\n");
   printf("| 6. Heap Sort      (...)          |\n");
   printf("| 7. Counting Sort  (...)          |\n");
@@ -107,14 +107,15 @@ int MenuSelecaoOrdenacao(){
   printf("\n\n\n");
 
   printf("- Escolha um dos algoritmos de ordenação acima -\n");
-  printf("- algoritmos funcionando: 1, 2, 3, ... -\n");
+  printf("- algoritmos funcionando: 1, 2, 3, 4, ... -\n");
   printf("-> ");
 
   scanf("%c", &x);
 
   y = x - '0';
 
-  if(x != '1' && x != '2' && x != '3'){
+  if(x != '1' && x != '2' && x != '3' &&
+     x != '4'){
     FuncaoErro();
     return -1;
   }
@@ -262,6 +263,11 @@ void fazerOrdenacao(int algoritmo){
   if(algoritmo == INSERTIONSORT){
     printf("Iniciando a ordenação com o algorítmo INSERTIONSORT\n");
     clock_t tempo = InsertionSort(vetor);
+    printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)tempo) / CLOCKS_PER_SEC);
+  }
+  if(algoritmo == MERGESORT){
+    printf("Iniciando a ordenação com o algorítmo MERGESORT\n");
+    clock_t tempo = MergeSort(vetor, 0, obterTamanhoVetor(vetor)-1); // é necessário passar os índices inicial e final pois é um algoritmo recursivo
     printf("\n\nTempo gasto na ordenação: %.5f segundos\n", ((double)tempo) / CLOCKS_PER_SEC);
   }
 }
