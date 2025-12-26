@@ -2,7 +2,7 @@
 Este repositório contém o projeto final da disciplina de Estrutura de Dados, desenvolvido por Mauro Gutemberg Magalhães Barros como requisito do curso de Análise e Desenvolvimento de Sistemas no Instituto Federal do Piauí.
 
 ## Descrição do Projeto
-O projeto se trata de um programa que contém os seguintes algorítmos de ordenação:  
+O projeto se trata de um programa que contém os seguintes algoritmos de ordenação:  
 - Bubble Sort
 - Insertion Sort
 - Selection Sort
@@ -12,6 +12,9 @@ O projeto se trata de um programa que contém os seguintes algorítmos de ordena
 - Counting Sort
 
 O projeto conta com um tipo abstrato de dados chamado "Vetor", que encapsula um array dinâmico de inteiros, seu número de elementos e fornece métodos para manipulação e ordenação dos dados.
+
+A função principal do projeto é fazer com que o usuário consiga comparar o tempo de ordenação de todos os algoritmos implementados.
+O usuário terá um menu interativo pra poder manipular o Vetor e selecionar o algoritmo desejado.
 
 ## Estrutura do Código
 O código está organizado nos seguintes arquivos:
