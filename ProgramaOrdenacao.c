@@ -11,6 +11,13 @@
 #include <time.h>
 #include <stdbool.h>
 
+#ifdef _WIN32
+ #include <windows.h>
+ #define CLEAR "cls"
+#else
+  #define CLEAR "clear"
+#endif
+
 #define lim 100 // geração de números aleatórios de 1 à lim
 
 /*
@@ -160,7 +167,7 @@ void GerenciarVetor(){
 /*
  * */
 void limparTela(){
-  system("clear");
+  system(CLEAR);
 }
 
 /*
