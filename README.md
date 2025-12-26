@@ -43,3 +43,21 @@ Para executar o programa, utilize o comando:
 ``` bash
 ./ProgramaOrdenacao
 ```
+
+## Como usar
+Ao executar o programa, você será apresentado a um menu interativo com as seguintes opções:
+1. Gerenciar Vetor (preencher e liberar)
+2. Utilizar Algoritmos de Ordenação
+3. Imprimir o Vetor
+4. Sair  
+
+Siga as instruções na tela para manipular o vetor e aplicar os algoritmos de ordenação conforme desejado.  
+Para cada algoritmo de ordenação, o programa exibirá o tempo gasto para ordenar o vetor.  
+Você terá que criar um novo Vetor para cada algoritmo.  
+Para sair do programa, você precisará liberar o Vetor.
+
+## Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias ou correções.  
+Caso queira indicar algum outro algoritmo de ordenação, abra um issue apenas citando o algoritmo.  
+
+# Turma de Análise e Desenvolvimento de Sistemas - IFPI Campus Corrente - 2025.2
