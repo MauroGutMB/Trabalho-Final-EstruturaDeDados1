@@ -1,4 +1,5 @@
 # ignorar arquivos sem extensão gerados da compilação C
+
 *
 !*/
 !*.*
