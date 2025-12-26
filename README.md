@@ -25,6 +25,17 @@ O código está organizado nos seguintes arquivos:
 
 ## Compilação e Execução
 Para compilar o programa, utilize o seguinte comando no terminal:
+
+### Linux
+``` bash
+gcc AlgoritmosDeOrdenacao/* Vetor.c ProgramaOrdenacao.c -o ProgramaOrdenacao.exe
+```
+Para executar o programa, utilize o comando:
+``` bash
+./ProgramaOrdenacao.exe
+```
+
+### Linux
 ``` bash
 gcc AlgoritmosDeOrdenacao/* Vetor.c ProgramaOrdenacao.c -o ProgramaOrdenacao
 ```
@@ -32,5 +43,3 @@ Para executar o programa, utilize o comando:
 ``` bash
 ./ProgramaOrdenacao
 ```
-
-Obs: caso esteja utilizando o Windows, substitua `./ProgramaOrdenacao` por `ProgramaOrdenacao.exe`, bem como na compilação.
