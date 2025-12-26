@@ -25,6 +25,7 @@ Vetor *criarVetor(int tamanho) {
   return v;
 }
 
+
 /*
  * Função pra definir o valor de um elemento no Vetor.
  * \Se indice for -1, adiciona no próximo índice disponível.
