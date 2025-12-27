@@ -60,4 +60,4 @@ Para sair do programa, você precisará liberar o Vetor.
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias ou correções.  
 Caso queira indicar algum outro algoritmo de ordenação, abra um issue apenas citando o algoritmo.  
 
-# Turma de Análise e Desenvolvimento de Sistemas - IFPI Campus Corrente - 2025.2
+# Análise e Desenvolvimento de Sistemas - IFPI Campus Corrente - 2025.2
