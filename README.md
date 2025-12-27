@@ -23,14 +23,19 @@ O código está organizado nos seguintes arquivos:
 - `ProgramaOrdenacao.c`: Contém a função `main`, que serve como ponto de entrada para o programa, permitindo ao usuário interagir com o vetor e aplicar os algoritmos de ordenação.
 - `AlgoritmosDeOrdenacao/`: Diretório que contém implementações separadas dos algoritmos de ordenação. 
 
-## Compilação e Execução
-Para compilar o programa, utilize o seguinte comando no terminal:
+## Clonagem, Compilação e Execução
+
+### 1. Clone o repositório através do seguinte comando no terminal:
+``` bash
+git clone https://github.com/MauroGutMB/Trabalho-Final-EstruturaDeDados1.git
+```
+
+### 2. Para compilar o programa e rodar, respectivamente, utilize os seguintes comandos no terminal:
 
 ### --- Windows ---
 ``` bash
 gcc AlgoritmosDeOrdenacao/* Vetor.c ProgramaOrdenacao.c -o ProgramaOrdenacao.exe
 ```
-Para executar o programa, utilize o comando:
 ``` bash
 ./ProgramaOrdenacao.exe
 ```
@@ -39,7 +44,6 @@ Para executar o programa, utilize o comando:
 ``` bash
 gcc AlgoritmosDeOrdenacao/* Vetor.c ProgramaOrdenacao.c -o ProgramaOrdenacao
 ```
-Para executar o programa, utilize o comando:
 ``` bash
 ./ProgramaOrdenacao
 ```
