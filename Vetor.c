@@ -82,6 +82,32 @@ void preencherVetorAleatorio(Vetor *v, int n, int cap) {
 }
 
 /*
+ * Preencher n inteiros ordenados de forma crescente no vetor
+ * */
+void preencherVetorOrdenadoCrescente(Vetor *v, int n) {
+  if (n > v->tamanho) {
+    printf("Erro: Número de elementos a preencher excede o tamanho do vetor.\n");
+    return;
+  }
+  for (int i = 0; i < n; i++) {
+    definirElemento(v, -1, i + 1); // Preenche com valores de 1 a n
+  }
+}
+
+/*
+ * Preencher n inteiros ordenados de forma decrescente no vetor
+ * */
+void preencherVetorOrdenadoDecrescente(Vetor *v, int n) {
+  if (n > v->tamanho) {
+    printf("Erro: Número de elementos a preencher excede o tamanho do vetor.\n");
+    return;
+  }
+  for (int i = 0; i < n; i++) {
+    definirElemento(v, -1, n - i); // Preenche com valores de n a 1
+  }
+}
+
+/*
  * Função pra liberar vetor e seus elementos
  * */
 void liberarVetor(Vetor *v) {
@@ -118,4 +144,15 @@ void swapElementos(Vetor *v, int indice1, int indice2) {
   int temp = v->elementos[indice1];
   v->elementos[indice1] = v->elementos[indice2];
   v->elementos[indice2] = temp;
+}
+
+/*
+ * Criar uma cópia do vetor para ser usada de backup e comparar o tempo de ordenação com outros algoritmos
+ * */
+Vetor *copiarVetor(Vetor *v) {
+  Vetor *copia = criarVetor(v->tamanho);
+  for (int i = 0; i < v->index_atual; i++) {
+    definirElemento(copia, -1, v->elementos[i]);
+  }
+  return copia;
 }
