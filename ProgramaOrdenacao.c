@@ -18,7 +18,7 @@
   #define CLEAR "clear"
 #endif
 
-#define lim 100 // geração de números aleatórios de 1 à lim
+#define lim 1000 // geração de números aleatórios de 1 à lim
 
 /*
  * Enum dos algoritmos de ordenação
@@ -34,8 +34,11 @@ void preenchimentoAutomatico(); // função de preenchimento automatico do vetor
 void limparVetor(); // função pra limpar o vetor
 void fazerOrdenacao(int algoritmo); // faz a ordenação 
 void limparBuffer(); // limpa o buffer / também utilizo como confirmação pra prosseguir
+void restaurarVetor(); // restaura o vetor a partir do backup
 
 Vetor* vetor; // vetor utilizado
+Vetor* backupVetor; // backup do vetor utilizado para comparação posteriores
+
 bool programa = true; // programa rodando
 
 // ---------------------------------------------------------------------------------------------------------------------- //
@@ -140,13 +143,14 @@ void GerenciarVetor(){
   char x;
   int y;
 
-  printf("+--------------------------------------+\n");
-  printf("|        Gerenciamento do Vetor        |\n");
-  printf("+--------------------------------------+\n");
-  printf("| 1.   Preencher o vetor manualmente   |\n");
-  printf("| 2. Preencher o vetor automaticamente |\n");
-  printf("| 3.         Esvaziar o vetor          |\n");
-  printf("+--------------------------------------+\n");
+  printf("+----------------------------------------+\n");
+  printf("|         Gerenciamento do Vetor         |\n");
+  printf("+----------------------------------------+\n");
+  printf("| 1. Configurações predefinidas do vetor |\n");
+  printf("| 2. Preencher o vetor automaticamente   |\n");
+  printf("| 3.         Restaurar Vetor             |\n");
+  printf("| 4.         Esvaziar vetor              |\n");
+  printf("+---------------------------------------+\n");
 
   printf("\n\n\n");
   printf("-> ");
@@ -158,9 +162,12 @@ void GerenciarVetor(){
   switch (y){
     case 1: preenchimentoManual(); break;
     case 2: preenchimentoAutomatico(); break;
-    case 3: limparVetor(); break;
-    default: printf("Opção não presente.\n"); break;
+    case 3: restaurarVetor(); return;
+    case 4: limparVetor(); return;
+    default: printf("Opção não presente.\n"); return;
   }
+
+  backupVetor = copiarVetor(vetor);
 
 }
 
@@ -178,6 +185,7 @@ void FuncaoErro(){
 
 /*
  * */
+// refatorar pra seguir o pedrao do trabalho
 void preenchimentoManual(){
 
   if(vetor != NULL){
@@ -187,24 +195,65 @@ void preenchimentoManual(){
   }
 
   int sz;
-  printf("Insira o tamanho do vetor a ser preenchido -> ");
-  scanf("%i", &sz);
+  char x;
+
+  printf("+--------------------------------------+\n");
+  printf("|        Gerenciamento do Vetor        |\n");
+  printf("+--------------------------------------+\n");
+  printf("| 1. Vetor com 100 elementos           |\n");
+  printf("| 2. Vetor com 1.000 elementos         |\n");
+  printf("| 3. Vetor com 10.000 elementos        |\n");
+  printf("| 4. Vetor com 100.000 elementos       |\n");
+  printf("+--------------------------------------+\n");
+
+  printf("\n\n-> ");
+  scanf("%c", &x);
   limparBuffer();
 
-  vetor = criarVetor(sz);
+  sz = (x - '0');
 
-  for(int i = 0; i < sz; i++){
-    int val;
-     
-    printf("Valor do elemento de índice %i -> ", i);
-    scanf("%i", &val);
-    limparBuffer();
-    definirElemento(vetor, i, val);
+  switch (sz){
+    case 1: sz = 100; break;
+    case 2: sz = 1000; break;
+    case 3: sz = 10000; break;
+    case 4: sz = 100000; break;
+    default: printf("Opção inválida.\n"); return;
+  }
+
+  printf("+--------------------------------------+\n");
+  printf("|        Gerenciamento do Vetor        |\n");
+  printf("+--------------------------------------+\n");
+  printf("| 1. Preencher com números aleatórios  |\n");
+  printf("| 2. Preencher em ordem decrescente    |\n");
+  printf("| 3. Preencher em ordem crescente      |\n");
+  printf("+--------------------------------------+\n");
+
+  printf("\n\n-> ");
+
+  scanf("%c", &x);
+  limparBuffer();
+
+  int metodo = (x - '0');
+
+  switch (metodo){
+    case 1:
+      vetor = criarVetor(sz);
+      preencherVetorAleatorio(vetor, sz, lim);
+      break;
+    case 2:
+      vetor = criarVetor(sz);
+      preencherVetorOrdenadoDecrescente(vetor, sz);
+      break;
+    case 3:
+      vetor = criarVetor(sz);
+      preencherVetorOrdenadoCrescente(vetor, sz);
+      break;
+    default:
+      printf("Opção inválida.\n");
+      return;
   }
 
   limparTela();
-  printf("Vetor de %i elementos criado com sucesso!\n", sz);
-  printf("Elementos do vetor: ");
   imprimirVetor(vetor);
 
   limparBuffer();
@@ -245,7 +294,9 @@ void preenchimentoAutomatico(){
  * */
 void limparVetor(){
   liberarVetor(vetor);
+  liberarVetor(backupVetor);
   vetor = NULL;
+  backupVetor = NULL;
   printf("Vetor liberado com sucesso!\n");
 
   limparBuffer();
@@ -304,4 +355,15 @@ void fazerOrdenacao(int algoritmo){
 void limparBuffer(){
 	int c;
 	while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void restaurarVetor(){
+  vetor = copiarVetor(backupVetor);
+
+  printf("+-------------------------------+\n");
+  printf("|       Vetor restaurado!       |\n");
+  printf("+-------------------------------+\n");
+
+  limparBuffer();
+  limparTela();
 }
