@@ -163,7 +163,7 @@ void GerenciarVetor(){
     case 1: preenchimentoManual(); break;
     case 2: preenchimentoAutomatico(); break;
     case 3: restaurarVetor(); return;
-    case 4: limparVetor(); return;
+    case 4: if(vetor == NULL)return; limparVetor(); return;
     default: printf("Opção não presente.\n"); return;
   }
 
@@ -185,7 +185,6 @@ void FuncaoErro(){
 
 /*
  * */
-// refatorar pra seguir o pedrao do trabalho
 void preenchimentoManual(){
 
   if(vetor != NULL){
@@ -357,6 +356,8 @@ void limparBuffer(){
 	while ((c = getchar()) != '\n' && c != EOF);
 }
 
+/*
+ * */
 void restaurarVetor(){
   vetor = copiarVetor(backupVetor);
 
