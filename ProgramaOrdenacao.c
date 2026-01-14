@@ -15,8 +15,10 @@
 #ifdef _WIN32
  #include <windows.h>
  #define CLEAR "cls"
+ #define UTF "Portuguese_Brazil"
 #else
   #define CLEAR "clear"
+  #define UTF "pt_BR.UTF-8"
 #endif
 
 #define lim 1000 // geração de números aleatórios de 1 à lim
@@ -50,7 +52,7 @@ bool programa = true; // programa rodando
  * Função principal que inicializa o programa de ordenação
  * */
 int main(){
-  setlocale(LC_ALL, "pt_BR.UTF-8"); // UTF-8 pt-br
+  setlocale(LC_ALL, UTF); // UTF-8 pt-br
 
 
   while(programa){
