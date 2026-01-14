@@ -50,7 +50,7 @@ bool programa = true; // programa rodando
  * Função principal que inicializa o programa de ordenação
  * */
 int main(){
-  setlocale(LC_ALL, ""); // UTF-8 pt-br
+  setlocale(LC_ALL, "pt_BR.UTF-8"); // UTF-8 pt-br
 
 
   while(programa){
