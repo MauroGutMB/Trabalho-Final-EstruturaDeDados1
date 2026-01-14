@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <locale.h>
 
 #ifdef _WIN32
  #include <windows.h>
@@ -49,6 +50,8 @@ bool programa = true; // programa rodando
  * Função principal que inicializa o programa de ordenação
  * */
 int main(){
+  setlocale(LC_ALL, ""); // UTF-8 pt-br
+
 
   while(programa){
 
