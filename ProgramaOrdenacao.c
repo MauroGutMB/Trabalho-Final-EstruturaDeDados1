@@ -15,7 +15,7 @@
 #ifdef _WIN32
  #include <windows.h>
  #define CLEAR "cls"
- #define UTF "Portuguese_Brazil"
+ #define UTF "Portuguese"
 #else
   #define CLEAR "clear"
   #define UTF "pt_BR.UTF-8"
