@@ -16,6 +16,7 @@
  #include <windows.h>
  #define CLEAR "cls"
  #define UTF "Portuguese"
+ #include <windows.h>
 #else
   #define CLEAR "clear"
   #define UTF "pt_BR.UTF-8"
@@ -52,8 +53,19 @@ bool programa = true; // programa rodando
  * Função principal que inicializa o programa de ordenação
  * */
 int main(){
-  setlocale(LC_ALL, UTF); // UTF-8 pt-br
 
+  /* 
+   * todo tipo gambiarra foi feita pra poder imprimir caracteres em UTF-8.
+   * se não funciona, o problema não é meu código, o problema é sua máquina.
+  */
+
+  setlocale(LC_ALL, UTF); // UTF-8 pt-br
+  #ifdef _WIN32
+    SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
+  #endif
+
+  // -------------------------------------------------------------------------------------------------------------------- //
 
   while(programa){
 
