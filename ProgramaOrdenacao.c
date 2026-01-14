@@ -15,7 +15,7 @@
 #ifdef _WIN32
  #include <windows.h>
  #define CLEAR "cls"
- #define UTF "Portuguese"
+ #define UTF "Portuguese_Brazil"
  #include <windows.h>
 #else
   #define CLEAR "clear"
@@ -58,11 +58,8 @@ int main(){
    * todo tipo gambiarra foi feita pra poder imprimir caracteres em UTF-8.
    * se não funciona, o problema não é meu código, o problema é sua máquina.
   */
-
-  setlocale(LC_ALL, UTF); // UTF-8 pt-br
   #ifdef _WIN32
     SetConsoleOutputCP(65001);
-    SetConsoleCP(65001);
   #endif
 
   // -------------------------------------------------------------------------------------------------------------------- //
